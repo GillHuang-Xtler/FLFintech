@@ -55,3 +55,4 @@ Namespace(cuda=True, global_rounds=100, num_clients=10, save_path='res', stock_s
 Namespace(cuda=True, global_rounds=100, num_clients=10, save_path='res', stock_symbols=['ibm', 'aapl', 'abb', 'jpm', 'kep', 'naz', 'kro', 'oi', 'pbr', 'qtm'])
 Namespace(cuda=True, global_rounds=100, num_clients=10, save_path='res', stock_symbols=['ibm', 'aapl', 'abb', 'jpm', 'kep', 'naz', 'kro', 'oi', 'pbr', 'qtm'])
 Namespace(cuda=True, global_rounds=100, num_clients=10, save_path='res', stock_symbols=['ibm', 'aapl', 'abb', 'jpm', 'kep', 'naz', 'kro', 'oi', 'pbr', 'qtm'])
+Namespace(cuda=True, global_rounds=100, num_clients=10, save_path='res', stock_symbols=['ibm', 'aapl', 'abb', 'jpm', 'kep', 'naz', 'kro', 'oi', 'pbr', 'qtm'])
