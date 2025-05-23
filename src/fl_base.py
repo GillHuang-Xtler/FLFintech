@@ -23,6 +23,7 @@ class FederatedLearningBase(object):
         self.train_set_list = [] # [[client 1 x data, client 1 y data], ..., []]
 
         self.device = torch.device("cuda:0" if self.args.cuda else "cpu")
+        self.look_back = 60
 
         self.clients = []
 
@@ -62,16 +63,16 @@ class FederatedLearningBase(object):
             self.df_list.append(df)
             self.scaler_list.append(scaler)
 
-            look_back = 60  # choose sequence length
+            look_back = self.look_back  # choose sequence length
             x_train, y_train, x_test, y_test = load_data_from_stocks(df, look_back)
 
             self.train_set_list.append([x_train, y_train])
             self.test_set_list.append([x_test, y_test])
 
-            print('x_train.shape = ', x_train.shape)
-            print('y_train.shape = ', y_train.shape)
-            print('x_test.shape = ', x_test.shape)
-            print('y_test.shape = ', y_test.shape)
+            # print('x_train.shape = ', x_train.shape)
+            # print('y_train.shape = ', y_train.shape)
+            # print('x_test.shape = ', x_test.shape)
+            # print('y_test.shape = ', y_test.shape)
 
 
     def set_nets(self, path=None):
@@ -137,6 +138,11 @@ class FederatedLearningBase(object):
             y_train_pred = local_net(x_train)
 
             loss = loss_fn(y_train_pred, y_train)
+
+            # print("debug *********")
+            # print(x_train.shape)
+            # print(y_train_pred.shape)
+            # print(y_train.shape)
 
             # Zero out gradient, else they will accumulate between epochs
             optimiser.zero_grad()

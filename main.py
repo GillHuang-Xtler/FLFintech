@@ -1,6 +1,7 @@
 import argparse
 from src.fl_base import FederatedLearningBase as FLClass
 # from src.fl_two_variants import FLTwoVariants as FLClass
+from src.gradient_inversion import GradientInversion
 
 def get_args():
     args = argparse.ArgumentParser()
@@ -28,12 +29,21 @@ def run_predict(dataset_idx, path='res/final_global_model.pth'):
     fl.set_nets(path=path)
     fl.predict(dataset_idx=dataset_idx)
 
+
+def run_gradient_inversion(args):
+    fl_ginv = GradientInversion(args)
+    fl_ginv.load_data()
+    fl_ginv.set_nets()
+    fl_ginv.inversion()
+
+
 if __name__ == '__main__':
 
     args = get_args()
     # run_fl_training(args)
+    # run_predict(dataset_idx=9)
 
-    run_predict(dataset_idx=9)
+    run_gradient_inversion(args)
 
 
 
